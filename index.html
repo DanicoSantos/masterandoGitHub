@@ -1,23 +1,82 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Master of GitHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css\bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css\estilo.css" />
     <script src="js/angular.min.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
 </head>
+
 <body>
-    <section class="container">
-        <div class="page-header">
-            <h1 class="text-info">Master of GitHub</h1>
-        </div>
-        <p class="text-muted">Seja Bem-Vindo!</p>
-        
+    <section class="container" >
+        <section id="main">
+            <div class="page-header">
+                <h1 class="text-info">Master of GitHub</h1>
+            </div>
+            <p class="text-muted">Seja Bem-Vindo!</p>
+            <div data-ng-app="welcomeApp" data-ng-controller="welcomeCrtl">
+                <form class="form-horizontal" name="welcomeForm" method="POST">
+                    <div class="form-group">
+                        <label for="nome" class="control-label col-xs-2">Nome:</label>
+                        <div class="col-xs-6">
+                            <input data-ng-model="nome" type="text" class="form-control" name="nome" placeholder="Insira seu nome">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="control-label col-xs-2">E-mail:</label>
+                        <div class="col-xs-6">
+                            <input data-ng-model="email" type="email" name="email" class="form-control" placeholder="Insira seu e-mail">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="local" class="control-label col-xs-2">Cidade:</label>
+                        <div class="col-xs-6">
+                            <input data-ng-model="local" type="text" name="local" class="form-control" placeholder="Insira sua cidade">
+                        </div>
+                    </div>
+                </form>
+                <section class="panel panel-info">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">Seus Dados</h1>
+                    </div>
+                    <div class="panel-body table-responsive">
+                        <table class="table table-bordered table-condensed">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <b>Nome:</b>
+                                        <span data-ng-bind="nome"></span>
+                                    </td>
+                                    <td>
+                                        <b>E-mail:</b>
+                                        <span data-ng-bind="email" </span>
+                                    </td>
+                                    <td>
+                                        <b>Cidade:</b>
+                                        <span data-ng-bind="local"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </section>
+                <script>
+                    var welcomeApp = angular.module("welcomeApp", []);
+                    var welcomeCtrl = welcomeApp.controller("welcomeCrtl", function ($scope) {
+                        $scope.nome = "";
+                    });
+                </script>
+            </div>
+        </section>
     </section>
-    
+
 </body>
+
 </html>
